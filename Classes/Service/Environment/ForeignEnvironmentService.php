@@ -70,7 +70,7 @@ class ForeignEnvironmentService
      */
     public function getDatabaseInitializationCommands(): string
     {
-        if ($this->cache && $this->cache->has('foreign_db_init')) {
+        if ($this->cache->has('foreign_db_init')) {
             return $this->cache->get('foreign_db_init');
         }
 
@@ -159,12 +159,9 @@ class ForeignEnvironmentService
      *
      * @codeCoverageIgnore
      */
-    protected function getCache()
+    protected function getCache(): FrontendInterface
     {
-        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-        if ($cacheManager->hasCache('in2publish_core')) {
-            return $cacheManager->getCache('in2publish_core');
-        }
+        return GeneralUtility::makeInstance(CacheManager::class)->getCache('in2publish_core');
     }
 
     /**
