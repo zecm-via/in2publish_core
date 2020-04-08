@@ -1065,6 +1065,7 @@ class CommonRepository extends BaseRepository
 
         if ($this->shouldSkipSearchingForRelatedRecordsByFlexForm(
             $record,
+            $column,
             $columnConfiguration,
             $flexFormDefinition,
             $flexFormData
@@ -2261,6 +2262,7 @@ class CommonRepository extends BaseRepository
 
     /**
      * @param RecordInterface $record
+     * @param string $column
      * @param array $columnConfiguration
      * @param array $flexFormDefinition
      * @param array $flexFormData
@@ -2271,12 +2273,14 @@ class CommonRepository extends BaseRepository
      */
     protected function shouldSkipSearchingForRelatedRecordsByFlexForm(
         RecordInterface $record,
+        $column,
         $columnConfiguration,
         $flexFormDefinition,
         $flexFormData
     ): bool {
         $arguments = [
             'record' => $record,
+            'column' => $column,
             'columnConfiguration' => $columnConfiguration,
             'flexFormDefinition' => $flexFormDefinition,
             'flexFormData' => $flexFormData,
