@@ -1111,7 +1111,6 @@ class CommonRepository extends BaseRepository
         $config,
         $flexFormData
     ): array {
-
         if ($this->shouldSkipSearchingForRelatedRecordsByFlexFormProperty($record, $config, $flexFormData)) {
             return [];
         }
