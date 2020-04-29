@@ -105,6 +105,10 @@ class In2publishCoreDefiner implements DefinerInterface
             'tstamp',
             'last_indexed',
         ],
+        'sys_file_metadata' => [
+            'tstamp',
+            'crdate',
+        ],
     ];
 
     /**
