@@ -56,7 +56,8 @@ class GenInteger extends AbsGenNode
     {
         $tmp = [];
         foreach ($value as $key => $var) {
-            $valueNode = reset($this->nodes);
+            $nodes = $this->nodes->getArrayCopy();
+            $valueNode = reset($nodes);
             $casted = $valueNode->cast($var);
             $tmp[(int)$key] = $casted;
             unset($value[$key]);

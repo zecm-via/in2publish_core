@@ -56,7 +56,8 @@ class GenString extends AbsGenNode
     {
         $tmp = [];
         foreach ($value as $key => $var) {
-            $tmp[(string)$key] = reset($this->nodes)->cast($var);
+            $nodes = $this->nodes->getArrayCopy();
+            $tmp[(string)$key] = reset($nodes)->cast($var);
             unset($value[$key]);
         }
         return $tmp;
