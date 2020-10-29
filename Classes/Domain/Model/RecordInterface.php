@@ -131,7 +131,7 @@ interface RecordInterface
     /**
      * @return RecordInterface
      */
-    public function setDirtyProperties();
+    public function setDirtyProperties(): RecordInterface;
 
     /**
      * @return mixed
@@ -139,9 +139,9 @@ interface RecordInterface
     public function getDirtyProperties();
 
     /**
-     * @return RecordInterface
+     * @return void
      */
-    public function calculateState();
+    public function calculateState(): void;
 
     /**
      * @return bool
@@ -156,7 +156,7 @@ interface RecordInterface
     /**
      * Returns an identifier unique in the records table.
      *
-     * @return @return int|string
+     * @return int|string
      */
     public function getIdentifier();
 
@@ -164,9 +164,9 @@ interface RecordInterface
      * @param string $side
      * @param array $properties
      *
-     * @return $this
+     * @return RecordInterface
      */
-    public function setPropertiesBySideIdentifier($side, array $properties);
+    public function setPropertiesBySideIdentifier($side, array $properties): RecordInterface;
 
     /**
      * @param string $side
