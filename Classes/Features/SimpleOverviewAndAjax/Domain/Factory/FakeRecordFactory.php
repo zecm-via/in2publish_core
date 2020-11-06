@@ -132,7 +132,7 @@ class FakeRecordFactory
             'pages',
             $propertiesLocal,
             $propertiesForeign,
-            [],
+            (array)$this->tcaService->getConfigurationArrayForTable('pages'),
             []
         );
         $this->guessState($record);
@@ -151,7 +151,13 @@ class FakeRecordFactory
         if (0 === $record->getIdentifier()) {
             return;
         }
-        if ($this->pageIsNew($record)) {
+
+        $localProperties = $record->getLocalProperties();
+        $foreignProperties = $record->getForeignProperties();
+
+        if ([] === $localProperties && [] !== $foreignProperties) {
+            $record->setState(RecordInterface::RECORD_STATE_DELETED);
+        } elseif ($this->pageIsNew($record)) {
             $record->setState(RecordInterface::RECORD_STATE_ADDED);
         } elseif ($this->pageIsDeletedOnLocalOnly($record->getIdentifier())) {
             $record->setState(RecordInterface::RECORD_STATE_DELETED);
